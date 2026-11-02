@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/*
+ * Design system — English Coach
+ * Palette sobre (papier chaud + vert profond), contrastes WCAG AA vérifiés :
+ * texte principal ≥ 12:1, texte secondaire ≥ 4.8:1, accent sur fond ≥ 6:1.
+ */
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --surface-2: #f0eee8;
+  --border: #e2dfd6;
+  --text: #1c1b19;
+  --muted: #615e57;
+  --accent: #0f5e57;
+  --accent-hover: #0b4a44;
+  --accent-soft: #e2efec;
+  --accent-fg: #ffffff;
+  --gold: #8a5a00;
+  --gold-soft: #fbf0d9;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --success: #17703f;
+  --success-soft: #e5f4ea;
+  --warn: #8a5300;
+  --warn-soft: #fdf3e1;
+  --ring: #0f5e57;
+  --shadow: 0 1px 2px rgb(20 20 15 / 0.05), 0 4px 16px rgb(20 20 15 / 0.04);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1312;
+  --surface: #171c1b;
+  --surface-2: #1f2524;
+  --border: #2c3432;
+  --text: #ecebe6;
+  --muted: #a8a69f;
+  --accent: #5fc4b5;
+  --accent-hover: #7fd3c6;
+  --accent-soft: #1b3431;
+  --accent-fg: #082320;
+  --gold: #f2c45a;
+  --gold-soft: #3a2f14;
+  --danger: #ff8a7a;
+  --danger-soft: #3b1d1a;
+  --success: #5fd394;
+  --success-soft: #16301f;
+  --warn: #f5b14b;
+  --warn-soft: #3a2a12;
+  --ring: #7fd3c6;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, ui-serif, serif;
+  --shadow-card: var(--shadow);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Mots cliquables du dictionnaire intégré */
+.word-btn {
+  border-radius: 4px;
+  padding: 0 1px;
+  margin: 0 -1px;
+  cursor: pointer;
+  text-decoration: underline dotted transparent;
+  text-underline-offset: 4px;
+  transition: background-color 0.15s;
+}
+.word-btn:hover {
+  background: var(--accent-soft);
+  text-decoration-color: var(--accent);
+}
+.word-btn[aria-expanded="true"] {
+  background: var(--accent-soft);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@keyframes pop {
+  0% { transform: scale(0.96); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-pop {
+  animation: pop 0.18s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Les enfants de grilles peuvent rétrécir (texte tronqué au lieu de déborder). */
+.grid > * {
+  min-width: 0;
+}
