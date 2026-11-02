@@ -1,6 +1,7 @@
 import { stage1 } from "./grammar/stage1";
 import { stage2 } from "./grammar/stage2";
 import { stage3, stage4 } from "./grammar/stage3";
+import { stage1More, stage2More, stage3More, stage4More } from "./grammar/more";
 import { expand } from "./vocabulary/build";
 import { generalThemes } from "./vocabulary/general";
 import { businessThemes } from "./vocabulary/business";
@@ -14,7 +15,7 @@ import { ALL_ASSESSMENTS, EXAMS, PLACEMENT } from "./assessments";
 import { STAGES } from "./curriculum";
 import type { GrammarLesson, Stage, VocabTheme, Word } from "./types";
 
-export const LESSONS: GrammarLesson[] = [...stage1, ...stage2, ...stage3, ...stage4];
+export const LESSONS: GrammarLesson[] = [...stage1, ...stage1More, ...stage2, ...stage2More, ...stage3, ...stage3More, ...stage4, ...stage4More];
 const allThemes = [...generalThemes, ...businessThemes];
 export const THEMES: (VocabTheme & { level: string })[] = allThemes.map(({ id, title, business, level }) => ({ id, title, business, level }));
 export const WORDS: Word[] = expand(allThemes);

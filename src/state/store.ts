@@ -144,10 +144,37 @@ function db() {
   return dbPromise;
 }
 
-async function loadPersisted(): Promise<AppState | null> {
+/**
+ * Copie de secours synchrone : écrite dans localStorage quand la page est masquée ou fermée,
+ * car une écriture IndexedDB (asynchrone) peut être interrompue à ce moment-là.
+ * Au chargement, la version la plus récente des deux est conservée.
+ */
+const BACKUP_KEY = "state-backup";
+
+function writeBackup() {
   try {
-    const v = (await (await db()).get("kv", KEY)) as AppState | undefined;
+    localStorage.setItem(BACKUP_KEY, JSON.stringify({ t: Date.now(), state }));
+  } catch {
+    /* stockage plein ou bloqué : IndexedDB reste la source principale */
+  }
+}
+
+function readBackup(): { t: number; state: AppState } | null {
+  try {
+    const raw = localStorage.getItem(BACKUP_KEY);
+    return raw ? (JSON.parse(raw) as { t: number; state: AppState }) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function loadPersisted(): Promise<AppState | null> {
+  const backup = readBackup();
+  try {
+    const v = (await (await db()).get("kv", KEY)) as (AppState & { savedAt?: number }) | undefined;
+    if (v && backup && backup.t > (v.savedAt ?? 0)) return backup.state;
     if (v) return v;
+    if (backup) return backup.state;
   } catch {
     /* IndexedDB indisponible (navigation privée) */
   }
@@ -161,7 +188,7 @@ async function loadPersisted(): Promise<AppState | null> {
 
 async function persist(s: AppState) {
   try {
-    await (await db()).put("kv", s, KEY);
+    await (await db()).put("kv", { ...s, savedAt: Date.now() }, KEY);
     return;
   } catch {
     /* repli */
@@ -230,6 +257,7 @@ export function flush() {
 
 export function replaceState(next: AppState) {
   state = migrate(next);
+  writeBackup();
   emit();
   return flush();
 }
@@ -249,9 +277,15 @@ export function useReady(): boolean {
 
 if (typeof document !== "undefined") {
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "hidden") void flush();
+    if (document.visibilityState === "hidden") {
+      writeBackup();
+      void flush();
+    }
   });
-  window.addEventListener("pagehide", () => void flush());
+  window.addEventListener("pagehide", () => {
+    writeBackup();
+    void flush();
+  });
 }
 
 /* ---------- Dates ---------- */
