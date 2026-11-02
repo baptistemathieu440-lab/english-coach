@@ -8,7 +8,7 @@ interface Def extends Omit<ListeningItem, "questions" | "lines"> {
   questions: Q[];
 }
 
-function item(d: Def): ListeningItem {
+export function item(d: Def): ListeningItem {
   return {
     ...d,
     lines: d.lines.map(([s, en, fr]) => ({ s, en, fr })),
@@ -18,7 +18,7 @@ function item(d: Def): ListeningItem {
   };
 }
 
-const sp = (name: string, accent: Speaker["accent"], voice: Speaker["voice"]): Speaker => ({ name, accent, voice });
+export const sp = (name: string, accent: Speaker["accent"], voice: Speaker["voice"]): Speaker => ({ name, accent, voice });
 
 /**
  * Dialogues originaux écrits pour l'application. L'audio est produit par la

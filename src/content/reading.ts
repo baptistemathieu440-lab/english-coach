@@ -5,7 +5,7 @@ interface Def extends Omit<Article, "questions"> {
   questions: Q[];
 }
 
-function article(d: Def): Article {
+export function article(d: Def): Article {
   return {
     ...d,
     questions: d.questions.map(([prompt, options, answer, explanation], i): McqExercise => ({ id: `${d.id}-q${i + 1}`, kind: "mcq", prompt, options, answer, explanation })),

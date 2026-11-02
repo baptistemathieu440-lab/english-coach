@@ -41,14 +41,14 @@ Ensuite, depuis le téléphone : ouvrir l'adresse puis « Ajouter à l'écran d'
 |---|---|
 | **Accueil** | Programme du jour en 4 blocs (grammaire et vocabulaire, écoute, lecture, expression), série, objectif de temps, défis de la semaine, niveau validé, progression vers B2 |
 | **Apprendre** | 33 leçons de grammaire réparties sur 4 étapes (explication en français, règle, exemples audio, erreurs fréquentes, astuces, 9 à 10 exercices + 3 de renfort) ; 34 thèmes de vocabulaire |
-| **Écouter** | 17 dialogues originaux (A2 → B2), 7 accents possibles, vitesse réglable, questions, transcription et traduction après l'écoute, dictionnaire intégré, résumé corrigé, dictées |
+| **Écouter** | 25 dialogues originaux (A2 → B2), 7 accents possibles, vitesse réglable, questions, transcription et traduction après l'écoute, dictionnaire intégré, résumé corrigé, dictées |
 | **Parler** | 15 conversations guidées (dont 7 professionnelles), conversation libre sur 6 thèmes, 8 ateliers de prononciation, 12 sujets d'expression écrite |
-| **Lire** | 14 articles originaux (économie, société, technologie, finance, entrepreneuriat, international) avec dictionnaire au clic, questions, résumé corrigé |
+| **Lire** | 22 articles originaux (économie, société, technologie, finance, entrepreneuriat, international) avec dictionnaire au clic, questions, résumé corrigé |
 | **Business English** | 14 thèmes (marketing, ventes, négociation, management, finance, banque, patrimoine, réunions, présentations, emails…) reliés au vocabulaire, aux scénarios, aux écrits et aux articles |
 | **Révisions** | Répétition espacée (SM-2) des mots et des erreurs de grammaire, 5 modes de carte, carnet personnel, catégories : à revoir, récents, maîtrisés, oubliés, difficiles |
 | **Progression** | Niveau validé, progression par étape, résultats par compétence et évolution sur 8 semaines, minutes par jour, calendrier, examens, badges |
 
-Volume total : 33 leçons, 400 exercices, 325 mots et expressions, 17 écoutes, 14 articles, 15 scénarios, 12 sujets d'écrit, 1 test de positionnement et 4 examens blancs.
+Volume total : 33 leçons, 400 exercices, 325 mots et expressions, 25 écoutes, 22 articles, 15 scénarios, 12 sujets d'écrit, 1 test de positionnement et 4 examens blancs.
 
 ## Règles pédagogiques appliquées dans le code
 

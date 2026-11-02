@@ -4,8 +4,10 @@ import { stage3, stage4 } from "./grammar/stage3";
 import { expand } from "./vocabulary/build";
 import { generalThemes } from "./vocabulary/general";
 import { businessThemes } from "./vocabulary/business";
-import { LISTENING } from "./listening";
-import { ARTICLES } from "./reading";
+import { LISTENING as LISTENING_BASE } from "./listening";
+import { LISTENING_MORE } from "./listening-more";
+import { ARTICLES as ARTICLES_BASE } from "./reading";
+import { ARTICLES_MORE } from "./reading-more";
 import { SCENARIOS, FREE_TOPICS, DRILLS } from "./speaking";
 import { WRITING, BUSINESS } from "./writing";
 import { ALL_ASSESSMENTS, EXAMS, PLACEMENT } from "./assessments";
@@ -16,8 +18,10 @@ export const LESSONS: GrammarLesson[] = [...stage1, ...stage2, ...stage3, ...sta
 const allThemes = [...generalThemes, ...businessThemes];
 export const THEMES: (VocabTheme & { level: string })[] = allThemes.map(({ id, title, business, level }) => ({ id, title, business, level }));
 export const WORDS: Word[] = expand(allThemes);
+export const LISTENING = [...LISTENING_BASE, ...LISTENING_MORE];
+export const ARTICLES = [...ARTICLES_BASE, ...ARTICLES_MORE];
 
-export { LISTENING, ARTICLES, SCENARIOS, FREE_TOPICS, DRILLS, WRITING, BUSINESS, ALL_ASSESSMENTS, EXAMS, PLACEMENT, STAGES };
+export { SCENARIOS, FREE_TOPICS, DRILLS, WRITING, BUSINESS, ALL_ASSESSMENTS, EXAMS, PLACEMENT, STAGES };
 
 const byId = <T extends { id: string }>(list: T[]) => new Map(list.map((x) => [x.id, x]));
 
