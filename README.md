@@ -2,6 +2,8 @@
 
 Application web installable (PWA) pour apprendre l'anglais 30 à 45 minutes par jour, de A2 à B2 : grammaire, vocabulaire en répétition espacée, compréhension orale, lecture, expression orale avec professeur virtuel, expression écrite, Business English, évaluations et suivi des progrès.
 
+**En ligne : https://english-coach-a2-b2.netlify.app** (publiée automatiquement par Netlify à chaque envoi sur `main`).
+
 **Gratuite, sans compte, sans serveur, sans traceur.** Tout fonctionne dans le navigateur ; les progrès sont stockés sur l'appareil.
 
 ---
