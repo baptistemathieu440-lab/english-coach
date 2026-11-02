@@ -48,7 +48,7 @@ Ensuite, depuis le téléphone : ouvrir l'adresse puis « Ajouter à l'écran d'
 | **Révisions** | Répétition espacée (SM-2) des mots et des erreurs de grammaire, 5 modes de carte, carnet personnel, catégories : à revoir, récents, maîtrisés, oubliés, difficiles |
 | **Progression** | Niveau validé, progression par étape, résultats par compétence et évolution sur 8 semaines, minutes par jour, calendrier, examens, badges |
 
-Volume total : 41 leçons, 504 exercices, 325 mots et expressions, 25 écoutes, 22 articles, 15 scénarios, 12 sujets d'écrit, 1 test de positionnement et 4 examens blancs.
+Volume total : 41 leçons, 504 exercices, 554 mots et expressions, 25 écoutes, 22 articles, 15 scénarios, 12 sujets d'écrit, 1 test de positionnement et 4 examens blancs.
 
 ## Règles pédagogiques appliquées dans le code
 
@@ -107,7 +107,7 @@ tests/unit           vitest          tests/e2e   Playwright
 Tout le contenu est en TypeScript typé : l'éditeur signale les champs manquants, et `npm test` vérifie la cohérence (identifiants uniques, prérequis existants, réponses valides, modèles sans erreur, dictées présentes dans les dialogues…).
 
 - **Une leçon** : ajouter un `lesson({...})` dans `src/content/grammar/stageN.ts`, avec `prerequisites` (identifiants de leçons précédentes), au moins 8 `exercises` de 5 formats différents et 3 `extra`. Aides : `mcq`, `gap` (`___` = trou ; réponses séparées par `|`), `fr2en`, `en2fr`, `order`, `fix` (détection d'erreur), `build` (construction libre).
-- **Des mots** : ajouter des lignes `[anglais, français, définition, API, nature, exemple, traduction]` dans un thème de `src/content/vocabulary/`. Un nouveau thème doit être rattaché à une étape dans `curriculum.ts`.
+- **Des mots** : ajouter des lignes `[anglais, français, définition, API, nature, exemple, traduction]` dans `src/content/vocabulary/more.ts` (rangées par identifiant de thème) ou directement dans un thème de `src/content/vocabulary/`. Un nouveau thème doit être rattaché à une étape dans `curriculum.ts`.
 - **Une écoute** : `src/content/listening.ts` (locuteurs avec accent `us | gb | au | ie | in | ca | za`, répliques traduites, questions, phrases de dictée tirées du dialogue).
 - **Un article** : `src/content/reading.ts`. **Un scénario oral** : `src/content/speaking.ts`. **Un sujet d'écrit** : `src/content/writing.ts`.
 - **Une règle du correcteur** : `src/lib/checker.ts` (expression régulière, message en français, correction) + un cas dans `tests/unit/engine.test.ts`.

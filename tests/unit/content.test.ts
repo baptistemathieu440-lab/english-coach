@@ -122,3 +122,10 @@ describe("contenu pédagogique", () => {
     }
   });
 });
+
+describe("vocabulaire complémentaire", () => {
+  it("chaque thème de mots supplémentaires existe", async () => {
+    const { MORE_ROWS } = await import("@/content/vocabulary/more");
+    for (const id of Object.keys(MORE_ROWS)) expect(THEMES.some((t) => t.id === id), id).toBe(true);
+  });
+});

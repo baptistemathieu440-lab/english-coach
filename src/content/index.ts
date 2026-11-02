@@ -5,6 +5,7 @@ import { stage1More, stage2More, stage3More, stage4More } from "./grammar/more";
 import { expand } from "./vocabulary/build";
 import { generalThemes } from "./vocabulary/general";
 import { businessThemes } from "./vocabulary/business";
+import { MORE_ROWS } from "./vocabulary/more";
 import { LISTENING as LISTENING_BASE } from "./listening";
 import { LISTENING_MORE } from "./listening-more";
 import { ARTICLES as ARTICLES_BASE } from "./reading";
@@ -16,7 +17,7 @@ import { STAGES } from "./curriculum";
 import type { GrammarLesson, Stage, VocabTheme, Word } from "./types";
 
 export const LESSONS: GrammarLesson[] = [...stage1, ...stage1More, ...stage2, ...stage2More, ...stage3, ...stage3More, ...stage4, ...stage4More];
-const allThemes = [...generalThemes, ...businessThemes];
+const allThemes = [...generalThemes, ...businessThemes].map((t) => ({ ...t, rows: [...t.rows, ...(MORE_ROWS[t.id] ?? [])] }));
 export const THEMES: (VocabTheme & { level: string })[] = allThemes.map(({ id, title, business, level }) => ({ id, title, business, level }));
 export const WORDS: Word[] = expand(allThemes);
 export const LISTENING = [...LISTENING_BASE, ...LISTENING_MORE];
